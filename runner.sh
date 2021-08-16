@@ -27,4 +27,4 @@ echo Jenkins unlock password above. Save this You;ll need it for the next step!
 # Open Jenkins Instance
 firefox http://localhost:8090
 
-echo Done! test test test
+echo Done! test test test test
