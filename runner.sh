@@ -25,7 +25,7 @@ sudo docker exec -it jenkins-server cat /var/jenkins_home/secrets/initialAdminPa
 echo Jenkins unlock password above. Save this You;ll need it for the next step!
 
 #Set Jebkins docker instance to restart automatic on system reboot
-docker update --restart unless-stopped jenkins_server
+sudo docker update --restart unless-stopped jenkins-server
 
 # Open Jenkins Instance
 firefox http://localhost:8090
