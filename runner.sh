@@ -5,10 +5,10 @@ mkdir jenkins_home
 # Setup Jekins Docker Image
 sudo docker pull jenkins/jenkins
 
-sudo docker run -dit jenkins-server -p 8090:8080 -p 50000:50000 -v /home/testvm/jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11; sleep 30; sudo docker restart $(sudo docker ps -a -q)
+sudo docker run -d --name jenkins-server jenkins_image -p 8090:8080 -p 50000:50000 -v /home/testvm/jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11;
 
 #Setup Appache Docker image
-docker run -dit --name apache-server -p 8091:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+sudo docker run -d --name apache-server apache_image -p 8091:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
 
 #Forward ports for Jenkins and apache
 sudo ufw enable
