@@ -1,11 +1,6 @@
-# Builds Docker Image
-docker build -t vpn_server_image .
+# Builds Docker image
+docker build -t vpn_client_image .
+docker rm -f vpn-server
 
-# Runs docker image and names container to vpn-server
-docker run --name vpn-server vpn_server_image 
-
-# Starts Docker Container
-docker start vpn-server
-
-#Sets container to restart on system restart
-sudo docker update --restart unless-stopped vpn-server
+# Runs Docker image - Acccess file system from inside container
+docker run -it --name vpn-server -v /Users/brajam/OneDrive\ -\ Enterprise\ 365/Cloned\ Projects/dev-auto-install:/root/vpn vpn_client_image bash

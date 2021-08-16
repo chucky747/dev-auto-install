@@ -1,7 +1,6 @@
-FROM ubuntu
+FROM centos:latest
 
-RUN  apt-get update
+RUN  yum update -y
      
-CMD ["echo", " vpn-server image built"]
      
-WORKDIR /root/vpn-server 
+WORKDIR /root/vpn-server
