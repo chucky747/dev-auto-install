@@ -5,8 +5,6 @@ docker rm -f vpn-server
 # Runs Docker image in silent mode and in privilleged mode
 docker run -it -d --privileged --name vpn-server vpn_client_image bash
 
-
-# Send commands to container and run as container (inside)
 # Install Dependencies inside container
 docker exec -it vpn-server apt-get -y install wget
 docker exec -it vpn-server apt update
