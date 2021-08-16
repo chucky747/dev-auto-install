@@ -9,15 +9,6 @@ sudo apt install xrdp
 sudo systemctl enable --now xrdp
 sudo ufw allow from any to any port 3389 proto tcp
 
-# allow ssh on port 22
-sudo apt install openssh-server
-sudo service ssh start
-sudo service ssh status
-sudo ufw allow ssh
-sudo ufw allow from 192.168.0.0/24 to any port ssh
-sudo ufw enable
-sudo ufw verbose
-
 echo Installed Dependencies!
 
 echo Installing Docker...
