@@ -1,6 +1,6 @@
-FROM centos:latest
+FROM ubuntu:18.04
 
-RUN  yum update -y
-     
+RUN  apt-get update
+
      
 WORKDIR /root/vpn-server
