@@ -88,3 +88,4 @@ sudo apt-get install sublime-text
 echo Sublime Text installed!
 
 bash runner.sh
+
