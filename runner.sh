@@ -22,6 +22,9 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' apac
 
 echo Printing Jenkins password
 sudo docker exec -it jenkins-server cat /var/jenkins_home/secrets/initialAdminPassword
-echo Jenkins unlock password above. Save this!
+echo Jenkins unlock password above. Save this You;ll need it for the next step!
+
+# Open Jenkins Instance
+firefox http://localhost:8090
 
 echo Done!
