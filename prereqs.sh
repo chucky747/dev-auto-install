@@ -5,7 +5,7 @@ echo Installing Dependencies...
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
 
 # Enable RDP
-sudo apt install xrdp
+sudo apt install -y xrdp
 sudo systemctl enable --now xrdp
 sudo ufw allow from any to any port 3389 proto tcp
 
@@ -19,7 +19,7 @@ echo Installing Docker...
 #Setup Docker Repo - Install using the repository
  sudo apt-get update
 
- sudo apt-get install \
+ sudo apt-get -y install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -35,7 +35,7 @@ echo \
 
 # Install Docker Engine
  sudo apt-get update
- sudo apt-get install docker-ce docker-ce-cli containerd.io
+ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # Verify Docker is installed
  sudo docker run hello-world
@@ -51,7 +51,7 @@ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 
 # Update to add the repository, and install the Terraform CLI.
-sudo apt-get update && sudo apt-get install terraform
+sudo apt-get update && sudo apt-get -y install terraform
 
 # Verify the installation
 terraform -help
@@ -63,7 +63,7 @@ echo Installing Ansible
 # Installs ansible from the repository
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt update
-sudo apt install ansible
+sudo apt install -y ansible
 
 #Set up Ansible Inventory file
 sudo nano /etc/ansible/hosts
@@ -83,7 +83,7 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 
 sudo apt-get update
 
-sudo apt-get install sublime-text
+sudo apt-get install -y sublime-text
 
 echo Sublime Text installed!
 
