@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Setup Jenkins Home Dir working folder
 cd /home/testvm
 mkdir jenkins_home
