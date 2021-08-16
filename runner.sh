@@ -21,7 +21,7 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' jenk
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' apache-server
 
 echo Printing Jenkins password
-sudo docker exec -it jenkins-server cat/var/jenkins_home/secrets/initialAdminPassword
+sudo docker exec -it jenkins-server cat /var/jenkins_home/secrets/initialAdminPassword
 echo Jenkins unlock password above. Save this!
 
 echo Done!
