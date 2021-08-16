@@ -1,13 +1,16 @@
 #!/bin/bash
 
 # Setup Jenkins Home Dir working folder
-cd /home/testvm
-mkdir jenkins_home
+# cd /home/testvm
+# mkdir jenkins_home
+
+
 
 # Setup Jekins Docker Image
 sudo docker pull jenkins/jenkins
 
-sudo docker run -d --name jenkins-server -p 8090:8080 -p 50000:50000 -v /home/testvm/jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11;
+#Ubuntu DIR mount: sudo docker run -d --name jenkins-server -p 8090:8080 -p 50000:50000 -v /home/testvm/jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11;
+sudo docker run -d --name jenkins-server -p 8090:8080 -p 50000:50000 jenkins/jenkins:lts-jdk11;
 
 #Setup Appache Docker image
 sudo docker run -d --name apache-server -p 8091:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
