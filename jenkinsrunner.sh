@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Create local IP variable and bind to show default local interface IP
+mylocalip=$(sudo ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
+# Create Public IP variable and bind to show default Public IP
+mypublicip=$(curl https://ipinfo.io/ip)
+
 # Setup Jenkins Home Dir working folder
 cd /home/testvm
 mkdir jenkins_home
@@ -22,9 +27,20 @@ sudo docker -ps
 sudo docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' jenkins-server
 sudo docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' apache-server
 
-echo Printing Jenkins password
+echo
+echo
+echo ----------------- Jenkins URLS---------------------------
+echo
+echo Local Addresses: "localhost:8090" or "$mylocalip:8090" 
+echo Public Address: "$mypublicip:8090"
+echo
+echo Jenkins setup Password:
 sudo docker exec -it jenkins-server cat /var/jenkins_home/secrets/initialAdminPassword
-echo Jenkins unlock password above. Save this You;ll need it for the next step!
+echo
+echo -------------------------------------------------------------------
+echo
+echo
+echo Finished!
 
 #Set Jebkins docker instance to restart automatic on system reboot
 sudo docker update --restart unless-stopped jenkins-server
@@ -40,7 +56,7 @@ while true; do
     read -p "Do you have want to install a VPN?" yn
     case $yn in
         [Yy]* ) make install; break;;
-        [Nn]* ) bash apacherunner.sh ;;
+        [Nn]* ) exit ;;
         * ) echo "Please answer yes or no.";;
     esac
 done
