@@ -45,15 +45,13 @@ echo Finished!
 #Set Jebkins docker instance to restart automatic on system reboot
 sudo docker update --restart unless-stopped jenkins-server
 
-# Open Jenkins Instance
-firefox http://localhost:8090
 
-echo Done!
+curl http://localhost:8090
 
 sleep 3
 
 while true; do
-    read -p "Do you have want to install a VPN?" yn
+    read -p "Do you have want to exit?" yn
     case $yn in
         [Yy]* ) make install; break;;
         [Nn]* ) exit ;;
@@ -61,5 +59,4 @@ while true; do
     esac
 done
 
-
-bash vpnrunner.sh
+echo Done!
